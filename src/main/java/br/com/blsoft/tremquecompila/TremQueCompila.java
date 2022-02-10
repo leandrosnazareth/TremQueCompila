@@ -32,6 +32,9 @@ public class TremQueCompila extends javax.swing.JFrame {
         initComponents();
         setTitle("Trem Que Compila");
         setLocationRelativeTo(null);
+        this.barraDeStatus();
+//        setIconImage(new ImageIcon(getClass().getResource("resources/program-32.png")).getImage());
+//        jMenu1.setIcon(new javax.swing.ImageIcon("resources/program-32.png")); // NOI18N
     }
 
     /**
@@ -65,11 +68,14 @@ public class TremQueCompila extends javax.swing.JFrame {
         jMenuItem4 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
+
+        jspEditor.setBorder(javax.swing.BorderFactory.createTitledBorder("Editor de código fonte"));
 
         jtaEditor.setColumns(20);
         jtaEditor.setFont(new java.awt.Font("Lucida Console", 0, 14)); // NOI18N
         jtaEditor.setRows(5);
-        jtaEditor.setText("asdasdasdasd");
+        jtaEditor.setText("/**\n *\n * @author leand\n */\n\npublic class Imprimir {\n\n    /**\n     * @param args the command line arguments\n     */\n    public static void main(String[] args) {\n        // TODO code application logic here\n        System.out.println(\"Imprimindo\");\n    }\n    \n}");
         jtaEditor.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jtaEditorKeyReleased(evt);
@@ -77,12 +83,14 @@ public class TremQueCompila extends javax.swing.JFrame {
         });
         jspEditor.setViewportView(jtaEditor);
 
+        jspConsole.setBorder(javax.swing.BorderFactory.createTitledBorder("Console"));
+
         jtaConsole.setBackground(new java.awt.Color(51, 51, 51));
         jtaConsole.setColumns(20);
         jtaConsole.setFont(new java.awt.Font("Lucida Console", 0, 14)); // NOI18N
         jtaConsole.setForeground(new java.awt.Color(255, 255, 255));
+        jtaConsole.setLineWrap(true);
         jtaConsole.setRows(5);
-        jtaConsole.setText("aasasas");
         jspConsole.setViewportView(jtaConsole);
 
         javax.swing.GroupLayout jpPrincipalLayout = new javax.swing.GroupLayout(jpPrincipal);
@@ -103,9 +111,11 @@ public class TremQueCompila extends javax.swing.JFrame {
         jtfBarraDeFerramentas.setEditable(false);
         jtfBarraDeFerramentas.setBackground(new java.awt.Color(204, 204, 204));
 
+        jMenu1.setIcon(new javax.swing.ImageIcon("resources/program-32.png"));
         jMenu1.setText("Arquivo");
 
         jmiNovo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jmiNovo.setIcon(new javax.swing.ImageIcon("resources/novo-22.png"));
         jmiNovo.setText("Novo");
         jmiNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,6 +125,7 @@ public class TremQueCompila extends javax.swing.JFrame {
         jMenu1.add(jmiNovo);
 
         jmiAbrir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jmiAbrir.setIcon(new javax.swing.ImageIcon("resources/abrir-22.png"));
         jmiAbrir.setText("Abrir");
         jmiAbrir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,6 +135,7 @@ public class TremQueCompila extends javax.swing.JFrame {
         jMenu1.add(jmiAbrir);
 
         jmiSalvar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jmiSalvar.setIcon(new javax.swing.ImageIcon("resources/salvar-22.png"));
         jmiSalvar.setText("Salvar");
         jmiSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,6 +145,7 @@ public class TremQueCompila extends javax.swing.JFrame {
         jMenu1.add(jmiSalvar);
         jMenu1.add(jSeparator1);
 
+        jmiSair.setIcon(new javax.swing.ImageIcon("resources/sair-22.png"));
         jmiSair.setText("Sair");
         jmiSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,9 +156,11 @@ public class TremQueCompila extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
+        jMenu3.setIcon(new javax.swing.ImageIcon("resources/edit-32.png"));
         jMenu3.setText("Editar");
 
         jMenuItem8.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jMenuItem8.setIcon(new javax.swing.ImageIcon("resources/copiar-22.png"));
         jMenuItem8.setText("Copiar");
         jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -155,14 +170,17 @@ public class TremQueCompila extends javax.swing.JFrame {
         jMenu3.add(jMenuItem8);
 
         jMenuItem9.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jMenuItem9.setIcon(new javax.swing.ImageIcon("resources/colar-22.png"));
         jMenuItem9.setText("Colar");
         jMenu3.add(jMenuItem9);
 
         jMenuBar1.add(jMenu3);
 
+        jMenu2.setIcon(new javax.swing.ImageIcon("resources/play-32.png"));
         jMenu2.setText("Executar");
 
         jmiCompilar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F6, 0));
+        jmiCompilar.setIcon(new javax.swing.ImageIcon("resources/martelo-22.png"));
         jmiCompilar.setText("Compilar");
         jmiCompilar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -172,6 +190,7 @@ public class TremQueCompila extends javax.swing.JFrame {
         jMenu2.add(jmiCompilar);
 
         jmiExecutar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F7, 0));
+        jmiExecutar.setIcon(new javax.swing.ImageIcon("resources/play-22.png"));
         jmiExecutar.setText("Executar");
         jmiExecutar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -181,6 +200,7 @@ public class TremQueCompila extends javax.swing.JFrame {
         jMenu2.add(jmiExecutar);
 
         jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F8, 0));
+        jMenuItem4.setIcon(new javax.swing.ImageIcon("resources/codigo-22.png"));
         jMenuItem4.setText("Compilar e Executar");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -219,14 +239,15 @@ public class TremQueCompila extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             Process exec = Runtime.getRuntime().exec("cmd /C javac " + nomeArq);
+            System.err.println(nomeArq);
             InputStream in = exec.getInputStream();
             Scanner scan = new Scanner(in);
             while (scan.hasNext()) {
                 System.out.println(scan.nextLine());
             }
             JOptionPane.showMessageDialog(rootPane, "Software compilado com sucesso!");
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(this, "Erro:");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao compilar o código!", "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jmiCompilarActionPerformed
 
@@ -258,29 +279,45 @@ public class TremQueCompila extends javax.swing.JFrame {
 
     private void jtaEditorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtaEditorKeyReleased
         // TODO add your handling code here:
+        //pegar quantidades de linhas e caracteres do editor
+        this.barraDeStatus();
+        //habilitar alterações
         temAlteracao = true;
     }//GEN-LAST:event_jtaEditorKeyReleased
 
     private void jmiExecutarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiExecutarActionPerformed
         // TODO add your handling code here:
+        String nomeArquivoClass = "Imprimi";
         try {
-            Process exec = Runtime.getRuntime().exec("cmd /C java Imprimir");
+            Process exec = Runtime.getRuntime().exec("cmd /C java " + nomeArquivoClass);
             InputStream in = exec.getInputStream();
             Scanner scan = new Scanner(in);
             //resetar variavel
             texto = "";
             //setar o texto de retono no console
             System.out.println("passie aqui 1");
-            while (scan.hasNext()) {
-                texto += scan.nextLine();
-                System.out.println(texto);
+            if (scan.hasNext()) {
+                while (scan.hasNext()) {
+                    texto += scan.nextLine();
+                    System.out.println(texto + "aqui");
+                }
+                this.jtaConsole.setText(texto);
+            } else {
+                this.jtaConsole.setText("Atenção: O arquivo " + nomeArquivoClass + " não foi encontrado!");
             }
-            System.out.println("passie aqui 2");
-        } catch (Exception e) {
-            System.out.println("passie aqui erro");
-            e.printStackTrace();
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jmiExecutarActionPerformed
+
+    //alimenta barra de estatos do software
+    private void barraDeStatus() {
+        int tamanhoLetras = this.jtaEditor.getText().length();
+        int linhas = this.jtaEditor.getLineCount();
+
+        this.jtfBarraDeFerramentas.setText("Total de caracteres: " + tamanhoLetras
+                + " Total de linhas: " + linhas);
+    }
 
     /**
      * função que carrega o texto
