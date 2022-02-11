@@ -23,18 +23,24 @@ public class TremQueCompila extends javax.swing.JFrame {
 
     String texto = "";
     private boolean temAlteracao = false;
-    String nomeArq = "";
+    //nome do arquivo sem a extensão
+    String nomeArquivo = "";
+    //nome com a extensão
+    String nomeCompletoArquivo = "";
+    //caminho completo da pasta de arquivos
+    static String caminhoDosArquivos = "C:/Users/leand/GitHub/TremQueCompila";
 
     /**
      * Creates new form TremQueCompila
      */
     public TremQueCompila() {
         initComponents();
-        setTitle("Trem Que Compila");
+        //setar titulo do frame
+        setTitle("Nova Classe (não está salvo) - Trem Que Compila");
+        //colocar o frame no centro da tela
         setLocationRelativeTo(null);
+        //atualizr barra de status
         this.barraDeStatus();
-//        setIconImage(new ImageIcon(getClass().getResource("resources/program-32.png")).getImage());
-//        jMenu1.setIcon(new javax.swing.ImageIcon("resources/program-32.png")); // NOI18N
     }
 
     /**
@@ -59,13 +65,16 @@ public class TremQueCompila extends javax.swing.JFrame {
         jmiSalvar = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jmiSair = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
+        jmiLimparConsole = new javax.swing.JMenu();
+        jmiCopiar = new javax.swing.JMenuItem();
+        jmiColar = new javax.swing.JMenuItem();
+        jmiLimpar = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jmiCompilar = new javax.swing.JMenuItem();
         jmiExecutar = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        jmiCompilarExecutar = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jmiSobre = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -75,7 +84,7 @@ public class TremQueCompila extends javax.swing.JFrame {
         jtaEditor.setColumns(20);
         jtaEditor.setFont(new java.awt.Font("Lucida Console", 0, 14)); // NOI18N
         jtaEditor.setRows(5);
-        jtaEditor.setText("/**\n *\n * @author leand\n */\n\npublic class Imprimir {\n\n    /**\n     * @param args the command line arguments\n     */\n    public static void main(String[] args) {\n        // TODO code application logic here\n        System.out.println(\"Imprimindo\");\n    }\n    \n}");
+        jtaEditor.setText("/**\n *\n * @author leand\n */\n\npublic class Imprimir {\n\n    /**\n     * @param args the command line arguments\n     */\n    public static void main(String[] args) {\n        // TODO code application logic here\n        System.out.println(\"Meu primeiro programa java\");\n    }\n    \n}");
         jtaEditor.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jtaEditorKeyReleased(evt);
@@ -156,25 +165,34 @@ public class TremQueCompila extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu3.setIcon(new javax.swing.ImageIcon("resources/edit-32.png"));
-        jMenu3.setText("Editar");
+        jmiLimparConsole.setIcon(new javax.swing.ImageIcon("resources/edit-32.png"));
+        jmiLimparConsole.setText("Editar");
 
-        jMenuItem8.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        jMenuItem8.setIcon(new javax.swing.ImageIcon("resources/copiar-22.png"));
-        jMenuItem8.setText("Copiar");
-        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+        jmiCopiar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jmiCopiar.setIcon(new javax.swing.ImageIcon("resources/copiar-22.png"));
+        jmiCopiar.setText("Copiar");
+        jmiCopiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem8ActionPerformed(evt);
+                jmiCopiarActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem8);
+        jmiLimparConsole.add(jmiCopiar);
 
-        jMenuItem9.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        jMenuItem9.setIcon(new javax.swing.ImageIcon("resources/colar-22.png"));
-        jMenuItem9.setText("Colar");
-        jMenu3.add(jMenuItem9);
+        jmiColar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jmiColar.setIcon(new javax.swing.ImageIcon("resources/colar-22.png"));
+        jmiColar.setText("Colar");
+        jmiLimparConsole.add(jmiColar);
 
-        jMenuBar1.add(jMenu3);
+        jmiLimpar.setIcon(new javax.swing.ImageIcon("resources/limpar-22.png"));
+        jmiLimpar.setText("Limpar console");
+        jmiLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiLimparActionPerformed(evt);
+            }
+        });
+        jmiLimparConsole.add(jmiLimpar);
+
+        jMenuBar1.add(jmiLimparConsole);
 
         jMenu2.setIcon(new javax.swing.ImageIcon("resources/play-32.png"));
         jMenu2.setText("Executar");
@@ -199,17 +217,29 @@ public class TremQueCompila extends javax.swing.JFrame {
         });
         jMenu2.add(jmiExecutar);
 
-        jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F8, 0));
-        jMenuItem4.setIcon(new javax.swing.ImageIcon("resources/codigo-22.png"));
-        jMenuItem4.setText("Compilar e Executar");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+        jmiCompilarExecutar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F8, 0));
+        jmiCompilarExecutar.setIcon(new javax.swing.ImageIcon("resources/codigo-22.png"));
+        jmiCompilarExecutar.setText("Compilar e Executar");
+        jmiCompilarExecutar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+                jmiCompilarExecutarActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem4);
+        jMenu2.add(jmiCompilarExecutar);
 
         jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("Ajuda");
+
+        jmiSobre.setText("Sobre o software");
+        jmiSobre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiSobreActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jmiSobre);
+
+        jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
 
@@ -231,54 +261,62 @@ public class TremQueCompila extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+    private void jmiCompilarExecutarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCompilarExecutarActionPerformed
+        // verifica se o arquivo .java foi salvo
+        if (verificarSeArquivoJavaFoiSalvo()) {
+            //gera o .class
+            this.compilarGerarPontoClass();
+            //executa o .class
+            this.executarClasseCompilada();
+        } else {
+            JOptionPane.showMessageDialog(null, "Você deve salvar sua classe antes de compilar! \n "
+                    + "Lembre-se de salvar o arquivo .java com o mesmo nome da sua classe.", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+            this.salvarFonteJava();
+        }
+    }//GEN-LAST:event_jmiCompilarExecutarActionPerformed
 
     private void jmiCompilarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCompilarActionPerformed
-        // TODO add your handling code here:
-        try {
-            Process exec = Runtime.getRuntime().exec("cmd /C javac " + nomeArq);
-            System.err.println(nomeArq);
-            InputStream in = exec.getInputStream();
-            Scanner scan = new Scanner(in);
-            while (scan.hasNext()) {
-                System.out.println(scan.nextLine());
-            }
-            JOptionPane.showMessageDialog(rootPane, "Software compilado com sucesso!");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Erro ao compilar o código!", "Erro", JOptionPane.ERROR_MESSAGE);
+        // verifica se existe o arquivo .java antes de executar
+        if (verificarSeArquivoJavaFoiSalvo()) {
+            //gera o .class
+            this.compilarGerarPontoClass();
+        } else {
+            JOptionPane.showMessageDialog(null, "Você deve salvar sua classe antes de compilar! \n "
+                    + "Lembre-se de salvar o arquivo .java com o mesmo nome da sua classe.", "Atenção", JOptionPane.INFORMATION_MESSAGE);
+            // não existe o .java salvo! chama o método de salvar
+            this.salvarFonteJava();
         }
     }//GEN-LAST:event_jmiCompilarActionPerformed
 
-    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+    private void jmiCopiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCopiarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem8ActionPerformed
+    }//GEN-LAST:event_jmiCopiarActionPerformed
 
     private void jmiNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiNovoActionPerformed
         // criar novo documento
-        setTitle("documento.java -" + " Trem Que Compila");
+        //setar o titulo do frame
+        setTitle("Nova Classe (não está salvo) - Trem Que Compila");
+        //limpar texto do editor
         jtaEditor.setText("");
         jtaConsole.setText("");
     }//GEN-LAST:event_jmiNovoActionPerformed
 
     private void jmiAbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAbrirActionPerformed
-        // TODO add your handling code here:
+        // abrir arquivo .java
         this.carregarFonteJava();
     }//GEN-LAST:event_jmiAbrirActionPerformed
 
     private void jmiSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiSalvarActionPerformed
-        // TODO add your handling code here:
+        // salvar código fonte .java
         this.salvarFonteJava();
     }//GEN-LAST:event_jmiSalvarActionPerformed
 
     private void jmiSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiSairActionPerformed
-        // TODO add your handling code here:
+        // sair do sistema
         this.sair();
     }//GEN-LAST:event_jmiSairActionPerformed
 
     private void jtaEditorKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtaEditorKeyReleased
-        // TODO add your handling code here:
         //pegar quantidades de linhas e caracteres do editor
         this.barraDeStatus();
         //habilitar alterações
@@ -286,42 +324,66 @@ public class TremQueCompila extends javax.swing.JFrame {
     }//GEN-LAST:event_jtaEditorKeyReleased
 
     private void jmiExecutarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiExecutarActionPerformed
-        // TODO add your handling code here:
-        String nomeArquivoClass = "Imprimi";
-        try {
-            Process exec = Runtime.getRuntime().exec("cmd /C java " + nomeArquivoClass);
-            InputStream in = exec.getInputStream();
-            Scanner scan = new Scanner(in);
-            //resetar variavel
-            texto = "";
-            //setar o texto de retono no console
-            System.out.println("passie aqui 1");
-            if (scan.hasNext()) {
-                while (scan.hasNext()) {
-                    texto += scan.nextLine();
-                    System.out.println(texto + "aqui");
-                }
-                this.jtaConsole.setText(texto);
+        if (verificarSeArquivoJavaFoiSalvo()) {
+            if (verificarSeArquivoClassFoiGerado()) {
+                this.executarClasseCompilada();
             } else {
-                this.jtaConsole.setText("Atenção: O arquivo " + nomeArquivoClass + " não foi encontrado!");
+                JOptionPane.showMessageDialog(null, "Você deve compilar sua classe antes de executar!",
+                        "Atenção", JOptionPane.INFORMATION_MESSAGE);
             }
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "Você deve salvar sua classe antes de executar! \n "
+                    + "Lembre-se de salvar o arquivo .java com o mesmo nome da sua classe.", "Atenção",
+                    JOptionPane.INFORMATION_MESSAGE);
+            //salvar arquivo
+            this.salvarFonteJava();
         }
     }//GEN-LAST:event_jmiExecutarActionPerformed
+
+    private void jmiLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiLimparActionPerformed
+        // limpar texto do console
+        jtaConsole.setText("");
+    }//GEN-LAST:event_jmiLimparActionPerformed
+
+    private void jmiSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiSobreActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_jmiSobreActionPerformed
 
     //alimenta barra de estatos do software
     private void barraDeStatus() {
         int tamanhoLetras = this.jtaEditor.getText().length();
         int linhas = this.jtaEditor.getLineCount();
-
         this.jtfBarraDeFerramentas.setText("Total de caracteres: " + tamanhoLetras
                 + " Total de linhas: " + linhas);
     }
 
-    /**
-     * função que carrega o texto
-     */
+    // verifica se o arquivo .java foi salvo
+    private boolean verificarSeArquivoJavaFoiSalvo() {
+        File file = new File(nomeCompletoArquivo);
+        File directory = new File(caminhoDosArquivos);
+
+        if (file.isFile()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    //verifica se foi compilado, gerado o arquivo .class
+    private boolean verificarSeArquivoClassFoiGerado() {
+        String nomeDaClass = nomeArquivo + ".class";
+        File file = new File(nomeDaClass);
+        File directory = new File(caminhoDosArquivos);
+
+        if (file.isFile()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    // ao abrir um arquivo java seta o código fonte no editor
     private void carregarFonteJava() {
         JFileChooser fileChooser = new JFileChooser("./");
         FileNameExtensionFilter filtro = new FileNameExtensionFilter("*.java", "java");
@@ -331,10 +393,14 @@ public class TremQueCompila extends javax.swing.JFrame {
         if (state == JFileChooser.APPROVE_OPTION) {
             //verifica o status
             File f = fileChooser.getSelectedFile();
-            nomeArq = fileChooser.getSelectedFile().getName();
-            //pega o file selecionado na janela
+            //paga o nome do arquivo completo com a extensão
+            nomeCompletoArquivo = fileChooser.getSelectedFile().getName();
+            //setar o nome do arquivo completo na variavel nomeArquivo
+            nomeArquivo = nomeCompletoArquivo;
+            //remover o .java da variavel nomeArquivo
+            this.removePontoJavaDoNomeDoarquivo();
+            //ler o arquivo para o controle de texto
             try {
-                //Tenta ler o arquivo para o controle de texto
                 FileReader fr = new FileReader(f);
                 //cria o FileReader com o file previamente selecionado
                 String temp = ""; //String temporaria
@@ -350,22 +416,19 @@ public class TremQueCompila extends javax.swing.JFrame {
                 //fecha arquivo
                 fr.close();
                 jtaEditor.setText(temp); //atribui temp ao controle
-//                imprimir nome do arquivo
-                System.err.println(nomeArq);
-                //seta o titulo pra remover o * se houver
-                setTitle(nomeArq + " - Trem Que Compila");
-                temAlteracao = false; //Não alterado
-
+                //seta o novo titulo com o nome do arquivo
+                setTitle(nomeCompletoArquivo + " - Trem Que Compila");
+                //informa false pois o arquivo ainda não foi alterado
+                temAlteracao = false;
             } catch (FileNotFoundException e) {
                 //Não encontrou arquivo
+                JOptionPane.showMessageDialog(null, "Arquivo não encontrado!", "Erro", JOptionPane.ERROR_MESSAGE);
                 e.printStackTrace();
             } catch (IOException e) {
                 //erro na leitura
-                System.out.println("Erro ao abrir o arquivo");
+                JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo!", "Erro", JOptionPane.ERROR_MESSAGE);
                 e.printStackTrace();
             }
-        } else {
-            //cancelou
         }
     }
 
@@ -378,39 +441,87 @@ public class TremQueCompila extends javax.swing.JFrame {
         int state = fileChooser.showSaveDialog(this);
         //Abre dialogo pra selecionar
         if (state == JFileChooser.APPROVE_OPTION) {
-            //se selecionou
-//            File f = fileChooser.getSelectedFile(); 
-            //pega file
+            //se selecionou pega o arquivo
             try {
-                // pego o path + o nome do arquivo  
-                // digitado no campo "salvar" do JFileChooser 
-                String NomeArq = fileChooser.getSelectedFile().getAbsolutePath();
-                nomeArq = fileChooser.getSelectedFile().getName();
-                // digitado no campo "salvar" do JFileChooser  
-                if (!NomeArq.endsWith(".java")) {
-                    nomeArq += ".java";
+                // pego o nome do arquivo e acresenta .java caso não tenha 
+                nomeCompletoArquivo = fileChooser.getSelectedFile().getName();
+                if (!nomeCompletoArquivo.endsWith(".java")) {
+                    nomeCompletoArquivo += ".java";
                 }
-
-                System.err.println(nomeArq);
-                //tenta salvar      
-                FileWriter fw = new FileWriter(NomeArq);
+                //setar o nome do arquivo completo no nome do arquivo
+                nomeArquivo = nomeCompletoArquivo;
+                //remover o .java do nome do arquivo, agora temos a variavel nomeArquivo com o 
+                //nome do arquivo sem a extensão e a variavel nomeCompletoArquivo com o nome do arquivo + a extensão
+                this.removePontoJavaDoNomeDoarquivo();
+                //salva o .java     
+                FileWriter fw = new FileWriter(nomeCompletoArquivo);
                 //pega o texto do TextArea e envia pra stream no arquivo
-                //A função write escreve uma string para o arquivo. Existem outras opções
-                //a função write pode gerar IOException
+                //A função write escreve uma string para o arquivo
                 fw.write(jtaEditor.getText());
                 //fecha arquivo
                 fw.close();
-                //seta o titulo pra remover o * se houver
-                setTitle(nomeArq + ".java - Trem Que Compila");
+                //seta o novo titulo com o nome do arquivo
+                setTitle(nomeCompletoArquivo + ".java - Trem Que Compila");
+                //informa false pois o arquivo ainda não foi alterado
                 temAlteracao = false;
-                //marca como não alterado
-
             } catch (FileNotFoundException e) {
-                //Não encontrou o arquivo
+                //Não encontrou arquivo
+                JOptionPane.showMessageDialog(null, "Arquivo não encontrado!", "Erro", JOptionPane.ERROR_MESSAGE);
+                e.printStackTrace();
             } catch (IOException e) {
-                //Algum outro erro de io, não conseguiu gravar pois não tem permissão por exemplo
+                //erro na leitura
+                JOptionPane.showMessageDialog(null, "Erro na leitura do arquivo!", "Erro", JOptionPane.ERROR_MESSAGE);
                 e.printStackTrace();
             }
+        }
+    }
+
+    //remover a extensão .java do nome do arquivo, caso tenha
+    private void removePontoJavaDoNomeDoarquivo() {
+        if (nomeArquivo.endsWith(".java")) {
+            //se tiver .javar sera removido
+            String[] nomeList = nomeArquivo.split(".java");
+            nomeArquivo = nomeList[0];
+        }
+    }
+
+    private void executarClasseCompilada() {
+        //verifica se tem o .java no nome do arquivo
+        removePontoJavaDoNomeDoarquivo();
+        //gera o .class
+        try {
+            Process exec = Runtime.getRuntime().exec("cmd /C java " + nomeArquivo);
+            InputStream in = exec.getInputStream();
+            Scanner scan = new Scanner(in);
+            //resetar variavel
+            texto = "";
+            //setar o texto de retono no console
+            if (scan.hasNext()) {
+                while (scan.hasNext()) {
+                    texto += scan.nextLine();
+                }
+                this.jtaConsole.setText(texto);
+            } else {
+                this.jtaConsole.setText("Atenção: O arquivo " + nomeArquivo + " não foi encontrado!");
+            }
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Erro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    //compila e gera o .class
+    private void compilarGerarPontoClass() {
+        try {
+            //executa comando para gerar o .class
+            Process exec = Runtime.getRuntime().exec("cmd /C javac " + nomeCompletoArquivo);
+            InputStream in = exec.getInputStream();
+            Scanner scan = new Scanner(in);
+            while (scan.hasNext()) {
+                System.out.println(scan.nextLine());
+            }
+            JOptionPane.showMessageDialog(rootPane, "Software compilado com sucesso!");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao compilar o código!", "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -468,16 +579,19 @@ public class TremQueCompila extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JMenuItem jmiAbrir;
+    private javax.swing.JMenuItem jmiColar;
     private javax.swing.JMenuItem jmiCompilar;
+    private javax.swing.JMenuItem jmiCompilarExecutar;
+    private javax.swing.JMenuItem jmiCopiar;
     private javax.swing.JMenuItem jmiExecutar;
+    private javax.swing.JMenuItem jmiLimpar;
+    private javax.swing.JMenu jmiLimparConsole;
     private javax.swing.JMenuItem jmiNovo;
     private javax.swing.JMenuItem jmiSair;
     private javax.swing.JMenuItem jmiSalvar;
+    private javax.swing.JMenuItem jmiSobre;
     private javax.swing.JPanel jpPrincipal;
     private javax.swing.JScrollPane jspConsole;
     private javax.swing.JScrollPane jspEditor;

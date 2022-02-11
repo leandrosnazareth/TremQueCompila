@@ -1,8 +1,8 @@
-
 /**
  *
  * @author leand
  */
+
 public class Imprimir {
 
     /**
@@ -10,7 +10,7 @@ public class Imprimir {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        System.out.println("Imprimindo");
+        System.out.println("Meu primeiro programa java");
     }
     
 }
