@@ -11,7 +11,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Scanner;
-import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -78,7 +77,6 @@ public class TremQueCompila extends javax.swing.JFrame {
         jmiSobre = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setIconImage(new ImageIcon(getClass().getResource("./img/codigo-22.png")).getImage());
         setResizable(false);
 
         jspEditor.setBorder(javax.swing.BorderFactory.createTitledBorder("Editor de código fonte"));
@@ -115,18 +113,18 @@ public class TremQueCompila extends javax.swing.JFrame {
         );
         jpPrincipalLayout.setVerticalGroup(
             jpPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jspConsole, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE)
+            .addComponent(jspConsole, javax.swing.GroupLayout.DEFAULT_SIZE, 543, Short.MAX_VALUE)
             .addComponent(jspEditor)
         );
 
         jtfBarraDeFerramentas.setEditable(false);
         jtfBarraDeFerramentas.setBackground(new java.awt.Color(204, 204, 204));
 
-        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/blsoft/tremquecompila/img/program-32.png"))); // NOI18N
+        jMenu1.setIcon(new javax.swing.ImageIcon("resources/program-32.png"));
         jMenu1.setText("Arquivo");
 
         jmiNovo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        jmiNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/blsoft/tremquecompila/img/novo-22.png"))); // NOI18N
+        jmiNovo.setIcon(new javax.swing.ImageIcon("resources/novo-22.png"));
         jmiNovo.setText("Novo");
         jmiNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -136,7 +134,7 @@ public class TremQueCompila extends javax.swing.JFrame {
         jMenu1.add(jmiNovo);
 
         jmiAbrir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        jmiAbrir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/blsoft/tremquecompila/img/abrir-22.png"))); // NOI18N
+        jmiAbrir.setIcon(new javax.swing.ImageIcon("resources/abrir-22.png"));
         jmiAbrir.setText("Abrir");
         jmiAbrir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -146,7 +144,7 @@ public class TremQueCompila extends javax.swing.JFrame {
         jMenu1.add(jmiAbrir);
 
         jmiSalvar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        jmiSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/blsoft/tremquecompila/img/salvar-22.png"))); // NOI18N
+        jmiSalvar.setIcon(new javax.swing.ImageIcon("resources/salvar-22.png"));
         jmiSalvar.setText("Salvar");
         jmiSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -156,7 +154,7 @@ public class TremQueCompila extends javax.swing.JFrame {
         jMenu1.add(jmiSalvar);
         jMenu1.add(jSeparator1);
 
-        jmiSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/blsoft/tremquecompila/img/sair-22.png"))); // NOI18N
+        jmiSair.setIcon(new javax.swing.ImageIcon("resources/sair-22.png"));
         jmiSair.setText("Sair");
         jmiSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -167,11 +165,11 @@ public class TremQueCompila extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jmiLimparConsole.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/blsoft/tremquecompila/img/edit-32.png"))); // NOI18N
+        jmiLimparConsole.setIcon(new javax.swing.ImageIcon("resources/edit-32.png"));
         jmiLimparConsole.setText("Editar");
 
         jmiCopiar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        jmiCopiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/blsoft/tremquecompila/img/copiar-22.png"))); // NOI18N
+        jmiCopiar.setIcon(new javax.swing.ImageIcon("resources/copiar-22.png"));
         jmiCopiar.setText("Copiar");
         jmiCopiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -181,11 +179,11 @@ public class TremQueCompila extends javax.swing.JFrame {
         jmiLimparConsole.add(jmiCopiar);
 
         jmiColar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        jmiColar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/blsoft/tremquecompila/img/colar-22.png"))); // NOI18N
+        jmiColar.setIcon(new javax.swing.ImageIcon("resources/colar-22.png"));
         jmiColar.setText("Colar");
         jmiLimparConsole.add(jmiColar);
 
-        jmiLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/blsoft/tremquecompila/img/limpar-22.png"))); // NOI18N
+        jmiLimpar.setIcon(new javax.swing.ImageIcon("resources/limpar-22.png"));
         jmiLimpar.setText("Limpar console");
         jmiLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -196,11 +194,11 @@ public class TremQueCompila extends javax.swing.JFrame {
 
         jMenuBar1.add(jmiLimparConsole);
 
-        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/blsoft/tremquecompila/img/play-32.png"))); // NOI18N
+        jMenu2.setIcon(new javax.swing.ImageIcon("resources/play-32.png"));
         jMenu2.setText("Executar");
 
         jmiCompilar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F6, 0));
-        jmiCompilar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/blsoft/tremquecompila/img/martelo-22.png"))); // NOI18N
+        jmiCompilar.setIcon(new javax.swing.ImageIcon("resources/martelo-22.png"));
         jmiCompilar.setText("Compilar");
         jmiCompilar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -210,7 +208,7 @@ public class TremQueCompila extends javax.swing.JFrame {
         jMenu2.add(jmiCompilar);
 
         jmiExecutar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F7, 0));
-        jmiExecutar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/blsoft/tremquecompila/img/play-22.png"))); // NOI18N
+        jmiExecutar.setIcon(new javax.swing.ImageIcon("resources/play-22.png"));
         jmiExecutar.setText("Executar");
         jmiExecutar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -220,7 +218,7 @@ public class TremQueCompila extends javax.swing.JFrame {
         jMenu2.add(jmiExecutar);
 
         jmiCompilarExecutar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F8, 0));
-        jmiCompilarExecutar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/blsoft/tremquecompila/img/codigo-22.png"))); // NOI18N
+        jmiCompilarExecutar.setIcon(new javax.swing.ImageIcon("resources/codigo-22.png"));
         jmiCompilarExecutar.setText("Compilar e Executar");
         jmiCompilarExecutar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
