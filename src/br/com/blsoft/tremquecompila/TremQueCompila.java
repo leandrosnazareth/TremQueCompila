@@ -11,6 +11,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Scanner;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -194,7 +195,7 @@ public class TremQueCompila extends javax.swing.JFrame {
 
         jMenuBar1.add(jmiLimparConsole);
 
-        jMenu2.setIcon(new javax.swing.ImageIcon("resources/play-32.png"));
+        jMenu2.setIcon(new javax.swing.ImageIcon("resources/play-22.png"));
         jMenu2.setText("Executar");
 
         jmiCompilar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F6, 0));
@@ -229,8 +230,10 @@ public class TremQueCompila extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
+        jMenu3.setIcon(new javax.swing.ImageIcon("resources/ajuda.png"));
         jMenu3.setText("Ajuda");
 
+        jmiSobre.setIcon(new javax.swing.ImageIcon("resources/informacao.png"));
         jmiSobre.setText("Sobre o software");
         jmiSobre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -348,6 +351,9 @@ public class TremQueCompila extends javax.swing.JFrame {
     private void jmiSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiSobreActionPerformed
         // TODO add your handling code here:
 
+        JOptionPane.showMessageDialog(null, "Software gratuito beta, criado para meu Curso de Java para iniciantes.\n"
+                + "Software para edição de arquivos de código fonte .java e compilação e execução de arquivos .class.",
+                "Sobre o software", JOptionPane.WARNING_MESSAGE);
     }//GEN-LAST:event_jmiSobreActionPerformed
 
     //alimenta barra de estatos do software
