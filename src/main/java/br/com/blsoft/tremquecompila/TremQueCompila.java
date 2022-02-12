@@ -28,7 +28,7 @@ public class TremQueCompila extends javax.swing.JFrame {
     //nome com a extensão
     String nomeCompletoArquivo = "";
     //caminho completo da pasta de arquivos
-    static String caminhoDosArquivos = "C:/Users/leand/GitHub/TremQueCompila";
+    static String caminhoDosArquivos = "./";
 
     /**
      * Creates new form TremQueCompila
